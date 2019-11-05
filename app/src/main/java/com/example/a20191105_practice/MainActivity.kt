@@ -2,17 +2,22 @@ package com.example.a20191105_practice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.a20191105_practice.adapter.RoomAdapter
 import com.example.a20191105_practice.datas.RoomData
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     var roomList = ArrayList<RoomData>()
+    var roomAdapter:RoomAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setData()
+        roomAdapter = RoomAdapter(this, R.layout.room_list_item, roomList)
+        lv_room.adapter = roomAdapter
     }
 
     fun sum(num1: Int, num2: Int) = num1 + num2
